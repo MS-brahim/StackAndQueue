@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stack and Queue</title>
+</head>
+<body>
+<center>
+    <h4>Stack & queue: </h4><br>
+<input type="text" placeholder="Add new stack"/>
+<button value="ss" onclick="push()">Push</button>
+
+
+
+<button class="btn btn-warning" >Pop</button>
+<button class="btn btn-danger" >Clear</button>
+</center>
+    <script type="text/javascript">
+        class StackNode {
+            constructor(data, next) {
+                this.data = next;
+                this.next = next;
+            }
+        }
+        class LinkedSatck {
+            constructor() {
+                this.top = null;
+                this.size = 0;
+            }
+
+            lenght() {
+                return this.size;
+            }
+
+            isEmpty() {
+                return this.top === null;
+            }
+
+            push(value) {
+                let node = new StackNode(value);
+                node.next =  this.top;
+                this.top = node;
+
+                this.size++;
+            }
+
+            pop() {
+                let result = this.top;
+                this.top = this.top.next;
+
+                this.size--;
+                return result.data;
+            }
+
+        }
+        let ss = new LinkedSatck()
+        ss.push("hello word")
+        ss.push("hello friends")
+        ss.push("hello youcode")
+        ss.push("hello safi")
+        ss.push("hello maroc")
+
+        while (!ss.isEmpty()) {
+            let value = ss.pop()
+            console.log(value)
+        }
+        
+
+    </script>
+</body>
+</html>
