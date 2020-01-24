@@ -33,25 +33,52 @@
             color: cornsilk;
 
         }
+        button:hover{
+            background-color: green;
+        }
         #result{
             font-size: 20px;
             font-weight: bold;
         }
+        #prev, #next {
+            background-color: grey;
+        }
+        #prev:hover, #next:hover{
+            background-color: black;
+        }
 
     </style>
 <body>
+    <!-- stack -->
 <center>
-    <h4>Stack & queue: </h4><br>
+    <h4>Stack: </h4><br>
 <input type="text" id="txt" placeholder="Add new stack"/>
 <button id="push">Push</button>
 <button id="pop">Pop</button>
 <div id="result">
 
 </div>
+<button id="prev">Previous</button>
+<button id="next">Next</button>
 </center>
+
+    <!-- queue -->
+<center>
+    <h4>Queue: </h4><br>
+<input type="text" id="txt" placeholder="Add new queue"/>
+<button id="push">Push</button>
+<button id="pop">Pop</button>
+<div id="result">
+
+</div>
+<button id="prev">Previous</button>
+<button id="next">Next</button>
+</center>
+
+    <!-- add javascript -->
     <script type="text/javascript">
 
-
+        // code for stack
         class StackNode {
             constructor(data, next) {
                 this.data = data;
@@ -73,6 +100,7 @@
             }
             // push
             push(value) {
+               
                 let node = new StackNode(value);
                 node.next =  this.top;
                 this.top = node;
@@ -104,10 +132,10 @@
             
         }
         let ss = new LinkedSatck()
-       
         let push = document.getElementById('push');
         let pop = document.getElementById("pop");
         let clear = document.getElementById("clear");
+        let next = document.getElementById("next");
       
         push.onclick = function() {
             let txt = document.getElementById('txt').value;
@@ -118,6 +146,22 @@
         pop.onclick = function() {
         ss.pop();
         ss.print();
+        }
+        next.onclick = function() {
+            
+        }
+
+        // code for queue
+        class queueNode {
+            constructor(data,next){
+                this.data = data;
+                this.next = next;
+            }
+        }
+        class LinkedQueue {
+            constructor() {
+                this.queue = null;
+            }
         }
 
     </script>
