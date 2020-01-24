@@ -6,21 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stack and Queue</title>
 </head>
+    <!-- add css -->
+    <style>
+        body {
+            list-style: inside;
+
+        }
+        h4 {
+            color: brown;
+            font-size: 20px;
+            font-style: italic;
+        }
+        input {
+            border-radius: 10px;
+            color:black;
+            font-size: 18px;
+            height: 35px;
+        }
+        button {
+            width: 100px;
+            height: 40px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: brown;
+            border: none;
+            color: cornsilk;
+
+        }
+        #result{
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
 <body>
 <center>
     <h4>Stack & queue: </h4><br>
-<input type="text" placeholder="Add new stack"/>
-<button value="ss" onclick="push()">Push</button>
+<input type="text" id="txt" placeholder="Add new stack"/>
+<button id="push">Push</button>
+<button id="pop">Pop</button>
+<div id="result">
 
-
-
-<button class="btn btn-warning" >Pop</button>
-<button class="btn btn-danger" >Clear</button>
+</div>
 </center>
     <script type="text/javascript">
+
+
         class StackNode {
             constructor(data, next) {
-                this.data = next;
+                this.data = data;
                 this.next = next;
             }
         }
@@ -37,7 +71,7 @@
             isEmpty() {
                 return this.top === null;
             }
-
+            // push
             push(value) {
                 let node = new StackNode(value);
                 node.next =  this.top;
@@ -45,7 +79,7 @@
 
                 this.size++;
             }
-
+            // poped
             pop() {
                 let result = this.top;
                 this.top = this.top.next;
@@ -53,20 +87,38 @@
                 this.size--;
                 return result.data;
             }
+            // affichage
+            print(){
+                let list="";
 
+                let current=this.top;
+                list+="<ol>";
+                while(current)
+                {
+                    list+="<li>"+ current.data+"</li>";
+                    current=current.next;
+                }
+                list+="</ol>";
+                document.getElementById('result').innerHTML=list
+            }
+            
         }
         let ss = new LinkedSatck()
-        ss.push("hello word")
-        ss.push("hello friends")
-        ss.push("hello youcode")
-        ss.push("hello safi")
-        ss.push("hello maroc")
-
-        while (!ss.isEmpty()) {
-            let value = ss.pop()
-            console.log(value)
+       
+        let push = document.getElementById('push');
+        let pop = document.getElementById("pop");
+        let clear = document.getElementById("clear");
+      
+        push.onclick = function() {
+            let txt = document.getElementById('txt').value;
+            ss.push(txt);
+            ss.print();  
         }
-        
+
+        pop.onclick = function() {
+        ss.pop();
+        ss.print();
+        }
 
     </script>
 </body>
